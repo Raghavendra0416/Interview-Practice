@@ -5,12 +5,14 @@ import axios from "axios";
 function Pagination() {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
+    const [page, setPage] = useState(0);
+
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 setLoading(true);
-                //?limit=10
-                const response = await axios.get('https://dummyjson.com/products?limit=100');
+                //?limit=144
+                const response = await axios.get('https://dummyjson.com/products?limit=12');
                 console.log(response.data.products);
                 setProducts(response.data.products);
             } catch (err) {
@@ -25,27 +27,42 @@ function Pagination() {
     }, []);
 
     return (
-        <div className="container">
-            {
-                loading ?
-                    // If Loading True 
-                    <div>
-                        <h2>Loading....</h2>
-                    </div > :
-                    // If Loading is false
-                    (<div className={style.gridProducts}>
-                        {
-                            products.map((product) => {
-                                return <span className={style.products} key={product.id}>
-                                    <img src={product.thumbnail} alt={product.title} />
+        <div>
+            {/* GRID To Show Products */}
+            <div className="ProductsContainer">
+                {
+                    loading ?
+                        <div className={style.loadingContainer}>
+                            <h2>Loading....</h2>
+                        </div>
+                        :
+                        <div className={style.gridProducts}>
+                            {products.slice(0, 8).map((product) => (
+                                <span
+                                    className={style.products}
+                                    key={product.id}
+                                >
+                                    <img
+                                        src={product.thumbnail}
+                                        alt={product.title}
+                                    />
                                     {product.title}
                                 </span>
-                            })
-                        }
-                    </div>)
-            }
+                            ))}
+                        </div>
+                }
+            </div>
+
+            {/* Display Page Numbers */}
+            <div className={style.pageNumbers}>
+                <span>◀️</span>
+                <span>1</span>
+                <span>▶️</span>
+            </div>
         </div>
-    )
+    );
 }
+
+
 
 export default Pagination;

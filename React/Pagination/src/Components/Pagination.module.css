@@ -1,4 +1,4 @@
-.container h2 {
+.ProductsContainer h2 {
     padding: 2rem;
     text-align: center;
 }
@@ -27,4 +27,30 @@
     height: 250px;
     object-fit: cover;
     border-radius: 4px;
+}
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    /* horizontal */
+    align-items: center;
+    /* vertical */
+    min-height: 100vh;
+    /* full viewport height */
+
+}
+
+
+.pageNumbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 2rem;
+}
+
+
+.pageNumbers span {
+    cursor: pointer;
+    font-size: 1.1rem;
 }
