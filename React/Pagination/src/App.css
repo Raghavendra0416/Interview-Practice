@@ -1,0 +1,14 @@
+.container {
+    padding: 2rem;
+    text-align: center;
+}
+
+.container h1 {
+    margin-bottom: 1rem;
+}
+
+.divider {
+    border: none;
+    border-top: 2px solid #555;
+    margin: 0 2rem;
+}
