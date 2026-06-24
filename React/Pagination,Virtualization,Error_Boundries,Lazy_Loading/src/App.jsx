@@ -1,7 +1,8 @@
 import './App.css';
 import Pagination from './Components/Pagination/Pagination';
-import Virtualization from './Components/Virtualization/Virtualization.jsx'
-import WithoutVirtualization from './Components/Virtualization/withoutVirtualization/WithoutVirtualization'
+import Virtualization from './Components/Virtualization/Virtualization.jsx';
+import WithoutVirtualization from './Components/Virtualization/withoutVirtualization/WithoutVirtualization';
+import TanStack from './Components/Virtualization/TanStack/TanStack.jsx';
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
         <p>Practice For Interview</p>
       </div>
       <hr className="divider" />
-      <Virtualization />
+      {/* <Virtualization /> */}
       {/* <WithoutVirtualization /> */}
+      <TanStack />
     </>
   )
 }

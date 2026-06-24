@@ -1,0 +1,42 @@
+.page {
+    padding: 20px;
+}
+
+.heading {
+    margin: 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.subheading {
+    margin: 10px 0 20px;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0.85;
+}
+
+.container {
+    height: 400px;
+    overflow: auto;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.inner {
+    position: relative;
+    width: 100%;
+}
+
+.item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #fff;
+}
