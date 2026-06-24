@@ -10,24 +10,30 @@ const products = Array.from({ length: 10000 }, (_, i) => ({
 // Virtualization Constants
 const ITEM_HEIGHT = 40;
 const CONTAINER_HEIGHT = 400;
+const OVERSCAN = 5;
+// Overscan renders a few extra items above and below the visible viewport to prevent flickering during fast scrolling.
 
 function Virtualization() {
   // Track scroll position
   const [scrollTop, setScrollTop] = useState(0);
 
   // Calculate first visible item
-  const startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+  // const startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+  // OVERSCAN: Start rendering a few items before the first visible item.
+  const startIndex = Math.max(0, Math.floor(scrollTop / ITEM_HEIGHT) - OVERSCAN);
 
   // Calculate how many items fit in viewport
   const visibleItemsCount = Math.ceil(CONTAINER_HEIGHT / ITEM_HEIGHT);
 
   // Calculate last visible item
-  const endIndex = startIndex + visibleItemsCount;
+  // const endIndex = startIndex + visibleItemsCount;
+  // OVERSCAN: Render extra items after the last visible item.
+  const endIndex = Math.min(products.length, startIndex + visibleItemsCount + OVERSCAN * 2);
 
   // Fake height for scrollbar
   const totalHeight = products.length * ITEM_HEIGHT;
 
-  // Move visible items to correct position
+  // Position rendered items at their correct location inside the virtual container.
   const translateY = startIndex * ITEM_HEIGHT;
 
   return (
@@ -82,3 +88,10 @@ function Virtualization() {
 }
 
 export default Virtualization;
+
+
+
+// Overscan Changes:
+// 1. Subtract OVERSCAN from startIndex.
+// 2. Add OVERSCAN * 2 to endIndex.
+// 3. Keep translateY unchanged.
