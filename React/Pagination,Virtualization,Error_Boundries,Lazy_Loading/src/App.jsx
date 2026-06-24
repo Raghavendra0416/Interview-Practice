@@ -1,6 +1,6 @@
 import './App.css';
 import Pagination from './Components/Pagination/Pagination';
-import Virtualization from './Components/Virtualization/Virtualization'
+import Virtualization from './Components/Virtualization/Virtualization.jsx'
 import WithoutVirtualization from './Components/Virtualization/withoutVirtualization/WithoutVirtualization'
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
         <p>Practice For Interview</p>
       </div>
       <hr className="divider" />
-      {/* <Virtualization /> */}
-      <WithoutVirtualization />
+      <Virtualization />
+      {/* <WithoutVirtualization /> */}
     </>
   )
 }

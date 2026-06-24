@@ -1,73 +1,84 @@
-// function Virtualization() {
-//     return (
-//         <>
-//             <h1>Hello</h1>
-//         </>
-//     )
-// }
+import { useState } from "react";
+import style from "./Virtualization.module.css";
 
-// export default Virtualization;
-import React, { useMemo, useState } from "react";
+// Create 10,000 products
+const products = Array.from({ length: 10000 }, (_, i) => ({
+  id: i,
+  name: `Product ${i}`,
+}));
 
-const ITEM_HEIGHT = 50;
-const CONTAINER_HEIGHT = 300;
-const OVERSCAN = 3;
+// Virtualization Constants
+const ITEM_HEIGHT = 40;
+const CONTAINER_HEIGHT = 400;
 
-export default function Virtualization() {
+function Virtualization() {
+  // Track scroll position
   const [scrollTop, setScrollTop] = useState(0);
 
-  const items = useMemo(() => {
-    return Array.from({ length: 10000 }, (_, index) => `Item ${index + 1}`);
-  }, []);
+  // Calculate first visible item
+  const startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
 
-  const totalHeight = items.length * ITEM_HEIGHT;
+  // Calculate how many items fit in viewport
+  const visibleItemsCount = Math.ceil(CONTAINER_HEIGHT / ITEM_HEIGHT);
 
-  const startIndex = Math.max(0, Math.floor(scrollTop / ITEM_HEIGHT) - OVERSCAN);
-  const endIndex = Math.min(
-    items.length - 1,
-    Math.ceil((scrollTop + CONTAINER_HEIGHT) / ITEM_HEIGHT) + OVERSCAN
-  );
+  // Calculate last visible item
+  const endIndex = startIndex + visibleItemsCount;
 
-  const visibleItems = items.slice(startIndex, endIndex + 1);
+  // Fake height for scrollbar
+  const totalHeight = products.length * ITEM_HEIGHT;
+
+  // Move visible items to correct position
+  const translateY = startIndex * ITEM_HEIGHT;
 
   return (
-    <div
-      style={{
-        height: CONTAINER_HEIGHT,
-        overflowY: "auto",
-        border: "1px solid #ccc",
-        position: "relative",
-        fontFamily: "sans-serif",
-      }}
-      onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
-    >
-      <div style={{ height: totalHeight, position: "relative" }}>
-        {visibleItems.map((item, index) => {
-          const itemIndex = startIndex + index;
+    <div>
+      <h1 className={style.heading}>
+        Displaying {products.length} Products
+      </h1>
 
-          return (
-            <div
-              key={itemIndex}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: ITEM_HEIGHT,
-                transform: `translateY(${itemIndex * ITEM_HEIGHT}px)`,
-                display: "flex",
-                alignItems: "center",
-                paddingLeft: 12,
-                borderBottom: "1px solid #eee",
-                boxSizing: "border-box",
-                background: itemIndex % 2 === 0 ? "#fafafa" : "#fff",
-              }}
-            >
-              {item}
-            </div>
-          );
-        })}
+      {/* Scrollable Container */}
+      <div
+        className={style.container}
+        onScroll={(e) =>
+          setScrollTop(e.currentTarget.scrollTop)
+        }
+      >
+        {/* Fake Height Container */}
+        <div
+          style={{
+            height: `${totalHeight}px`,
+            position: "relative",
+          }}
+        >
+          {/* Move visible items to correct position */}
+          <div
+            style={{
+              transform: `translateY(${translateY}px)`,
+            }}
+          >
+            {products
+              .slice(startIndex, endIndex)
+              .map((product) => (
+                <div
+                  key={product.id}
+                  className={style.item}
+                >
+                  {product.name}
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Debug Info */}
+      <div className={style.debug}>
+        <p>scrollTop: {scrollTop}</p>
+        <p>startIndex: {startIndex}</p>
+        <p>endIndex: {endIndex}</p>
+        <p>translateY: {translateY}</p>
       </div>
     </div>
   );
 }
+
+export default Virtualization;

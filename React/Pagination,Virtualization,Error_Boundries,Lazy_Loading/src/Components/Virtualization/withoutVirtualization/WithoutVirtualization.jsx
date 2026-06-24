@@ -1,7 +1,7 @@
 import style from './WithoutVirtualization.module.css'
 
 // Function to create Dummy 10000 Products Names
-const products = Array.from({ length: 100 }, (_, i) => ({
+const products = Array.from({ length: 10000 }, (_, i) => ({
     id: i,
     name: `Product ${i}`
 }));

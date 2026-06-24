@@ -1,0 +1,26 @@
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    height: 400px;
+    overflow-y: auto;
+    border: 2px solid white;
+}
+
+.item {
+    height: 40px;
+    /* Must match ITEM_HEIGHT */
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    border-bottom: 1px solid #444;
+    box-sizing: border-box;
+}
+
+.debug {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+}
