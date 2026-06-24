@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import style from "./Pagination.module.css"
+import style from "../Pagination.module.css"
 import axios from "axios";
 
 function Pagination() {
