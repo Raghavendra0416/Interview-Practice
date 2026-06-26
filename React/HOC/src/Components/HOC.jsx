@@ -3,6 +3,7 @@ import DarkMode from "./Dark_Mode/DarkMode";
 import ToggleSwitch from "./Toggle_Switch/ToggleSwitch";
 import { useState } from 'react';
 
+//HOC -> Means Adding Extra Features for an already existing component. 
 
 function HOC() {
     // 1. State is now managed in the parent

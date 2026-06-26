@@ -5,6 +5,7 @@ function App() {
 
   return (
     <>
+      {/* Displaying Updated HOC */}
       <HOC />
     </>
   )
