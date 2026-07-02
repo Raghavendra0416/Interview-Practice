@@ -4,6 +4,8 @@ import { addFavourite, removeFavourite, clearFavourites } from '../features/favo
 import { setSearchTerm, setSelectedType, resetFilters } from '../features/ui/uiSlice';
 
 import store from '../app/store';
+import { useGetPokemonListQuery, useGetPokemonByNameQuery } from '../features/pokemon/pokemonApi';
+import FetcedPokemons from './FetchedPokemons';
 
 function Pokemon() {
     useEffect(() => {
@@ -58,6 +60,9 @@ function Pokemon() {
                     {Favourites.map((fav) => <li key={fav}>{fav}</li>)}
                 </ul>
             </div>
+
+            {/* RTK Query Fetched Pokemons */}
+            <FetcedPokemons />
         </>
     )
 }
