@@ -1,0 +1,62 @@
+.searchInfo {
+    margin: 10px;
+    font-family: sans-serif;
+    color: #555;
+}
+
+.listSection {
+    margin: 10px;
+}
+
+.listHeading {
+    font-family: sans-serif;
+    margin-bottom: 6px;
+}
+
+.pokemonList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 33rem;
+}
+
+.pokemonItem {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.15s ease;
+}
+
+.pokemonItem:last-child {
+    border-bottom: none;
+}
+
+.pokemonItem:hover {
+    background-color: #f0f2ff;
+}
+
+.detailSection {
+    margin: 10px;
+}
+
+.detailHeading {
+    font-family: sans-serif;
+    margin-bottom: 6px;
+}
+
+.detailCard {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px;
+    width: fit-content;
+    font-family: sans-serif;
+}
+
+.detailImage {
+    display: block;
+    margin-top: 8px;
+}

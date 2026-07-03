@@ -5,7 +5,6 @@ import { pokemonApi } from "../features/pokemon/pokemonApi";
 
 const store = configureStore({
     reducer: {
-        //Empty for now
         favourites: favSlice,
         ui: uiSlice,
 

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetPokemonListQuery, useGetPokemonByNameQuery, useGetPokemonByTypeQuery } from '../features/pokemon/pokemonApi';
-import styles from './FetchedPokemons.module.css';
 
 
 function FetcedPokemons() {
@@ -51,18 +50,18 @@ function FetcedPokemons() {
     return (
         <>
 
-            <p className={styles.searchInfo}>Search Term: {searchTerm} | Type: {selectedType}</p>
+            <p>Search Term: {searchTerm} | Type: {selectedType}</p>
 
             {/* Pokemon List from RTK Query */}
-            <div className={styles.listSection}>
-                <h2 className={styles.listHeading}>Pokemon List:</h2>
+            <div>
+                <h2>Pokemon List:</h2>
                 {isLoading && <p>Loading...</p>}
                 {selectedType && !typeData && <p>Loading type filter...</p>}
                 {error && <p>Error: {error.message}</p>}
-                <ul className={styles.pokemonList}>
+                <ul>
                     {filteredPokemon.map((pokemon) => (
                         <li key={pokemon.name}
-                            className={styles.pokemonItem}
+                            style={{ cursor: 'pointer' }}
                             onClick={() => setSelectedPokemon(pokemon.name)}>
                             {pokemon.name}</li>
                     ))}
@@ -70,15 +69,15 @@ function FetcedPokemons() {
             </div>
 
             {/* Pokemon Detail */}
-            <div className={styles.detailSection}>
-                <h2 className={styles.detailHeading}>Pokemon Detail:</h2>
+            <div>
+                <h2>Pokemon Detail:</h2>
                 {detailLoading && <p>Loading detail...</p>}
                 {pokemonDetail && (
-                    <div className={styles.detailCard}>
+                    <div>
                         <p>Name: {pokemonDetail.name}</p>
                         <p>Height: {pokemonDetail.height}</p>
                         <p>Weight: {pokemonDetail.weight}</p>
-                        <img className={styles.detailImage} src={pokemonDetail.sprites.front_default} alt={pokemonDetail.name} />
+                        <img src={pokemonDetail.sprites.front_default} alt={pokemonDetail.name} />
                     </div>
                 )}
             </div>

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { addFavourite, removeFavourite, clearFavourites } from '../features/favourites/favouritesSlice'
 import { setSearchTerm, setSelectedType, resetFilters } from '../features/ui/uiSlice';
 
-import store from '../app/store';
+// import store from '../app/store';
 import FetchedPokemons from './FetchedPokemons';
 import styles from './Pokemon.module.css';
 
@@ -24,23 +24,22 @@ function Pokemon() {
 
     return (
         <>
-            <h1 className={styles.heading}>Welcome</h1>
-            <label className={styles.label} htmlFor="name">Enter Name: </label>
-            <input className={styles.input} type="text" id="name" name="name" placeholder="Enter Name..."
+            <h1>Welcome</h1>
+            <label htmlFor="name">Enter Name: </label>
+            <input type="text" id="name" name="name" placeholder="Enter Name..."
                 onChange={handleChange} />
-            <span className={styles.valueDisplay}> {value} </span>
+            <span> {value} </span>
 
             {/* Favourite Slice */}
-            <div className={styles.actionRow}>
-                <button className={styles.button} type="button" onClick={() => dispatch(addFavourite(value))}>Add Favourite Pokemon</button>
-                <button className={styles.button} type="button" onClick={() => dispatch(removeFavourite(value))}>Remove Pokemon</button>
-                <button className={styles.button} type="button" onClick={() => dispatch(clearFavourites())}>Remove All Pokemons</button>
+            <div style={{ margin: '10px', display: 'flex', gap: '10px' }}>
+                <button type="button" onClick={() => dispatch(addFavourite(value))}>Add Favourite Pokemon</button>
+                <button type="button" onClick={() => dispatch(removeFavourite(value))}>Remove Pokemon</button>
+                <button type="button" onClick={() => dispatch(clearFavourites())}>Remove All Pokemons</button>
             </div>
 
             {/* UI Slice - Filters */}
-            <div className={styles.filterRow}>
+            <div style={{ margin: '10px', display: 'flex', gap: '10px' }}>
                 <select
-                    className={styles.select}
                     value={selectedType}
                     onChange={(e) => dispatch(setSelectedType(e.target.value))}
                 >
@@ -49,8 +48,8 @@ function Pokemon() {
                     <option value="water">Water</option>
                     <option value="grass">Grass</option>
                 </select>
-                <button className={styles.button} type="button" onClick={() => dispatch(setSearchTerm(value))}>Search Favourite Pokemon</button>
-                <button className={styles.button} type="button" onClick={() => {
+                <button type="button" onClick={() => dispatch(setSearchTerm(value))}>Search Favourite Pokemon</button>
+                <button type="button" onClick={() => {
                     dispatch(resetFilters());
                     setValue('');
                 }}>Reset Filter</button>
@@ -58,9 +57,9 @@ function Pokemon() {
 
             {/* <p>Search: {searchTerm} | Type: {selectedType}</p> */}
 
-            <div className={styles.favouritesBox}>
-                <h2 className={styles.favouritesHeading}>Favourite Pokemons:</h2>
-                <ul className={styles.favouritesList}>
+            <div style={{ border: '1px solid black', height: 'auto', width: '500px' }}>
+                <h2>Favourite Pokemons:</h2>
+                <ul>
                     {Favourites.map((fav) => <li key={fav}>{fav}</li>)}
                 </ul>
             </div>
