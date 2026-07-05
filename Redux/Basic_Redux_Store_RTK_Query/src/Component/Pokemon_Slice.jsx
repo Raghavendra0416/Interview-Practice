@@ -7,6 +7,11 @@ import { setSearchTerm, setSelectedType, resetFilters } from '../features/ui/uiS
 import FetchedPokemons from './FetchedPokemons';
 import styles from './Pokemon.module.css';
 
+
+//This file is not being used.
+//this file uses favouriteSlice.
+//I have kept this file for understanding how a basic slice is dispatched inside a component.
+
 function Pokemon() {
     // useEffect(() => {
     //     const unsubscribe = store.subscribe(() => console.log(store.getState()));

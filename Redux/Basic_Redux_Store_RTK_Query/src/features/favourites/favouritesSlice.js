@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+//This File is not being Used, But it is present to understand:
+//How a basic Slice is createed
 const favSlice = createSlice({
     name: 'favorites',
     initialState: [],
