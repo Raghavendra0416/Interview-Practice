@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import favSlice from "../features/favourites/favouritesSlice";
 import uiSlice from "../features/ui/uiSlice";
 import { pokemonApi } from "../features/pokemon/pokemonApi";
-import { favouritesApi } from "../features/favourites/favouritesAPI";
+import { favouritesApi } from "../features/favourites/favouritesApi";
 
 const store = configureStore({
     reducer: {

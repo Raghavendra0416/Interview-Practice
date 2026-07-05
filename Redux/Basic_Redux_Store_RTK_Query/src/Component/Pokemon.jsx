@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useGetFavouritesQuery, useGetFavouriteByNameQuery, useAddFavouriteMutation, useRemoveFavouriteMutation } from '../features/favourites/favouritesAPI'
+import { useGetFavouritesQuery, useGetFavouriteByNameQuery, useAddFavouriteMutation, useRemoveFavouriteMutation } from '../features/favourites/favouritesApi'
 import { setSearchTerm, setSelectedType, resetFilters } from '../features/ui/uiSlice';
 
 // import store from '../app/store'; -> not using store, just for understanding
@@ -37,16 +37,25 @@ function Pokemon() {
 
     // so we can extract its `id` before calling removeFavourite (which needs id, not name)
     function handleRemove() {
-        const match = favPokemonNames?.find((fav) => fav.name === value);
+        // const match = favPokemonNames?.find((fav) => fav.name === value);
+
+        // entities is keyed by id, not name — so to find by name we still need to search,
+        // but now we search Object.values(entities) instead of the old flat array
+        const match = favPokemonNames
+            ? Object.values(favPokemonNames.entities).find((fav) => fav.name === value)
+            : undefined;
+
         if (match) {
             removeFavourite(match.id);
         }
         setValue('');
     }
 
+    console.log('favPokemonNames:', favPokemonNames);
+
     return (
         <>
-            <h1 className={styles.heading}>Welcome</h1>
+            <h1 className={styles.heading}>Welcome to Pokémon Squad Builder</h1>
             <label className={styles.label} htmlFor="name">Enter Name: </label>
             <input className={styles.input} type="text" id="name" name="name" placeholder="Enter Name..."
                 value={value}
@@ -97,7 +106,13 @@ function Pokemon() {
 
 
                 <ul className={styles.favouritesList}>
-                    {favPokemonNames?.map((fav) => <li key={fav.id}>{fav.name}</li>)}
+                    {/* optional chaining — if favPokemonNames is undefined (query not resolved yet),
+                        this whole expression short-circuits to undefined instead of throwing */}
+                    {/* ids holds the array of keys in insertion order — loop through ids, then look up each one directly in entities (O(1) lookup, no searching) */}
+                    {favPokemonNames?.ids?.map((id) => {
+                        const fav = favPokemonNames.entities[id];
+                        return <li key={fav.id}>{fav.name}</li>;
+                    })}
                 </ul>
             </div>
 

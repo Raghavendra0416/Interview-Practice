@@ -1,29 +1,29 @@
 {
-  "favourites": [
-    {
-      "id": "1",
-      "name": "pikachu"
-    },
-    {
-      "id": "2",
-      "name": "charizard"
-    },
-    {
-      "name": "bulbasaur",
-      "id": "R4t_IWOmp7Y"
-    },
-    {
-      "name": "metapod",
-      "id": "-XN1csowYw0"
-    },
-    {
-      "name": "arbok",
-      "id": "_rv60BXQP9E"
-    },
-    {
-      "name": "vulpix",
-      "id": "8gwp0TgC78M"
-    }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+    "favourites": [
+        {
+            "id": "1",
+            "name": "pikachu"
+        },
+        {
+            "id": "2",
+            "name": "charizard"
+        },
+        {
+            "name": "bulbasaur",
+            "id": "R4t_IWOmp7Y"
+        },
+        {
+            "name": "metapod",
+            "id": "-XN1csowYw0"
+        },
+        {
+            "name": "vulpix",
+            "id": "8gwp0TgC78M"
+        },
+        {
+            "name": "charmander",
+            "id": "Qsh38ODTvps"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
 }
