@@ -1,0 +1,12 @@
+{
+    "favourites": [
+        {
+            "id": "1",
+            "name": "pikachu"
+        },
+        {
+            "id": "2",
+            "name": "charizard"
+        }
+    ]
+}

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { addFavourite, removeFavourite, clearFavourites } from '../features/favourites/favouritesSlice'
 import { setSearchTerm, setSelectedType, resetFilters } from '../features/ui/uiSlice';
 
-import store from '../app/store';
+// import store from '../app/store';
 import FetchedPokemons from './FetchedPokemons';
 import styles from './Pokemon.module.css';
 
@@ -14,7 +14,7 @@ function Pokemon() {
     // }, [])
 
     const { selectedType } = useSelector(state => state.ui);
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(''); 
     const Favourites = useSelector(state => state.favourites);
     const dispatch = useDispatch();
 
