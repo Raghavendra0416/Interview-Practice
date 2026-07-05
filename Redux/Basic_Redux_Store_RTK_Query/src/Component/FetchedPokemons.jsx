@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useGetPokemonListQuery, useGetPokemonByNameQuery, useGetPokemonByTypeQuery } from '../features/pokemon/pokemonApi';
 import styles from './FetchedPokemons.module.css';
 
-
+//This using External API to get the data.
 function FetcedPokemons() {
 
     //RTK Query

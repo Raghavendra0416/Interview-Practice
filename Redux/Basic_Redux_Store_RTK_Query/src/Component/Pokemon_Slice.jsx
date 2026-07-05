@@ -18,6 +18,7 @@ function Pokemon() {
     //     return unsubscribe;
     // }, [])
 
+    //By useSelector we can fetch the data from the store
     const { selectedType } = useSelector(state => state.ui);
     const [value, setValue] = useState('');
     const Favourites = useSelector(state => state.favourites);

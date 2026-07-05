@@ -1,11 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { addFavourite, removeFavourite, clearFavourites } from '../features/favourites/favouritesSlice'
+import { useGetFavouritesQuery, useGetFavouriteByNameQuery, useAddFavouriteMutation, useRemoveFavouriteMutation } from '../features/favourites/favouritesAPI'
 import { setSearchTerm, setSelectedType, resetFilters } from '../features/ui/uiSlice';
 
-// import store from '../app/store';
+// import store from '../app/store'; -> not using store, just for understanding
 import FetchedPokemons from './FetchedPokemons';
 import styles from './Pokemon.module.css';
+
+//Using Internal API i.e db.json
 
 function Pokemon() {
     // useEffect(() => {
@@ -13,13 +15,33 @@ function Pokemon() {
     //     return unsubscribe;
     // }, [])
 
-    const { selectedType } = useSelector(state => state.ui);
     const [value, setValue] = useState('');
-    const Favourites = useSelector(state => state.favourites);
+    const { selectedType } = useSelector(state => state.ui);
     const dispatch = useDispatch();
+
+
+    // To rename it while destructuring, you use the `oldName: newName` syntax
+    const { data: favPokemonNames, isLoading, error } = useGetFavouritesQuery();
+    const { data: favPokeName, isLoading: isLoad, error: err } = useGetFavouriteByNameQuery(
+        value,
+        { skip: !value }
+    );
+    const [addFavourite, { isLoading: isAdding }] = useAddFavouriteMutation();
+    const [removeFavourite, { isLoading: isRemoving }] = useRemoveFavouriteMutation();
+
+
 
     function handleChange(e) {
         setValue(e.target.value);
+    }
+
+    // so we can extract its `id` before calling removeFavourite (which needs id, not name)
+    function handleRemove() {
+        const match = favPokemonNames?.find((fav) => fav.name === value);
+        if (match) {
+            removeFavourite(match.id);
+        }
+        setValue('');
     }
 
     return (
@@ -27,14 +49,23 @@ function Pokemon() {
             <h1 className={styles.heading}>Welcome</h1>
             <label className={styles.label} htmlFor="name">Enter Name: </label>
             <input className={styles.input} type="text" id="name" name="name" placeholder="Enter Name..."
+                value={value}
                 onChange={handleChange} />
             <span className={styles.valueDisplay}> {value} </span>
 
             {/* Favourite Slice */}
             <div className={styles.actionRow}>
-                <button className={styles.button} type="button" onClick={() => dispatch(addFavourite(value))}>Add Favourite Pokemon</button>
-                <button className={styles.button} type="button" onClick={() => dispatch(removeFavourite(value))}>Remove Pokemon</button>
-                <button className={styles.button} type="button" onClick={() => dispatch(clearFavourites())}>Remove All Pokemons</button>
+                <button className={styles.button} type="button" onClick={() => {
+                    addFavourite(value);
+                    setValue('');
+                }}>Add Favourite Pokemon</button>
+                {/* Disabled - this button doesn't need an onClick at all — useGetFavouriteByNameQuery
+                    already fires automatically once `value` is set (via skip logic above).
+                    Keeping a button here is optional; if you want it purely to make the search
+                    explicit/manual, we'd need a different approach (lazy query). For now, removed
+                    the broken empty onClick so the file compiles.  */}
+                {/* <button className={styles.button} type="button" >Search Pokemon By Name</button> */}
+                <button className={styles.button} type="button" onClick={handleRemove}>Remove Pokemon</button>
             </div>
 
             {/* UI Slice - Filters */}
@@ -60,8 +91,13 @@ function Pokemon() {
 
             <div className={styles.favouritesBox}>
                 <h2 className={styles.favouritesHeading}>Favourite Pokemons:</h2>
+
+                {isLoading && <p>Loading favourites...</p>}
+                {error && <p>Error loading favourites.</p>}
+
+
                 <ul className={styles.favouritesList}>
-                    {Favourites.map((fav) => <li key={fav}>{fav}</li>)}
+                    {favPokemonNames?.map((fav) => <li key={fav.id}>{fav.name}</li>)}
                 </ul>
             </div>
 

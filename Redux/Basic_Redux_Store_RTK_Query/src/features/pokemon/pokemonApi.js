@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
+//Using External API to fetch the data
 export const pokemonApi = createApi({
     reducerPath: 'pokemonApi',
     baseQuery: fetchBaseQuery({
