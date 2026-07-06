@@ -3,7 +3,7 @@ import favouritesReducer, { addFavourite, removeFavourite, clearFavourites } fro
 
 //This is just reference file, this file tests the favouritesSlice.js but we are not using that file.
 //We have done testig on that file because it is easy to understand than FavouritesApi.
-
+//This File is Just for understanding Testing. -> not used in the project.
 
 // describe() groups related tests together — here, everything about favouritesSlice
 describe('favouritesSlice', () => {
