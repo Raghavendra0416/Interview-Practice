@@ -4,6 +4,7 @@ import ComplexForm from './Components/Complex_Form/ComplexForm';
 import Login from "./Components/Login/Login";
 import ContactForm from "./Components/Contact_Form/ContactForm";
 import FormPlayground from './Components/FormPlayground/FormPlayground';
+import ZodPlayground from './Components/ZodPlayground/ZodPlayground';
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
     <>
       {/* <Login /> */}
       {/* <ContactForm /> */}
-      <FormPlayground />
+      {/* <FormPlayground /> */}
+      <ZodPlayground />
     </>
   )
 }
