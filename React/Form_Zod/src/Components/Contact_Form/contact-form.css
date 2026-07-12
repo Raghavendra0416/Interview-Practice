@@ -1,0 +1,83 @@
+.cf-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #f4f6f8; */
+    padding: 20px;
+}
+
+.cf-container {
+    background: #3f3d3d;
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.cf-container h1 {
+    margin-bottom: 24px;
+    font-size: 22px;
+    color: #f6f9fd;
+    text-align: center;
+}
+
+.cf-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cf-field label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #dbdee3;
+}
+
+.cf-field input,
+.cf-field textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+}
+
+.cf-field input:focus,
+.cf-field textarea:focus {
+    border-color: #4f46e5;
+}
+
+.cf-error {
+    font-size: 12px;
+    color: #dc2626;
+}
+
+.cf-form button {
+    margin-top: 8px;
+    padding: 10px;
+    background-color: #372dec;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cf-form button:hover {
+    background-color: #473bf3d6;
+}
+
+.cf-form button:disabled {
+    background-color: #4f44e7d6;
+    cursor: not-allowed;
+}

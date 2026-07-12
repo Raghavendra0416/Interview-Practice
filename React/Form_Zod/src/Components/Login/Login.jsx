@@ -2,19 +2,19 @@ import './login.css'
 import { useForm } from 'react-hook-form'
 
 function Login() {
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm(
-        {
+    const { register, handleSubmit, formState: { errors, isSubmitting }, } =
+        useForm({
             defaultValues: {
                 name: '',
                 email: '',
                 password: '',
             },
             // mode: 'onSubmit', -> not needed
-        }
-    );
+        });
 
-    const onSubmit = (data) => console.log(data);
-
+    const onSubmit = (data) => {
+        console.log("Data: ", data);
+    }
 
     return <div className="page">
         <div className="container">
