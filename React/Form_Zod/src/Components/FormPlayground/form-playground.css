@@ -1,0 +1,139 @@
+.fp-page {
+    min-height: 100vh;
+    padding: 32px 16px;
+    /* background-color: #f4f6f8; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fp-page h1 {
+    color: #1f2937;
+    margin-bottom: 16px;
+}
+
+.fp-mode-select {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.fp-mode-select select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    margin-left: 8px;
+}
+
+.fp-hint {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 6px;
+}
+
+.fp-container {
+    background: #fff;
+    width: 100%;
+    max-width: 480px;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.fp-debug {
+    background: #111827;
+    color: #d1fae5;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.fp-debug h3 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: #93c5fd;
+}
+
+.fp-debug pre {
+    margin: 0;
+    font-size: 11px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.fp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.fp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fp-field label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.fp-field input {
+    padding: 9px 10px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    outline: none;
+}
+
+.fp-field input:focus {
+    border-color: #4f46e5;
+}
+
+.fp-error {
+    font-size: 12px;
+    color: #dc2626;
+}
+
+.fp-form button {
+    margin-top: 6px;
+    padding: 10px;
+    background-color: #1c4ceb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.fp-form button:hover {
+    background-color: #3d88d4;
+    border-color: #4f46e5;
+}
+
+.fp-form button:disabled {
+    background-color: #a5b4fc;
+    cursor: not-allowed;
+}
+
+.fp-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.fp-actions button {
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 1px solid #d1d5db;
+    background: #1c4ceb;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.fp-actions button:hover {
+    background: #3d88d4;
+    border-color: #4f46e5;
+}

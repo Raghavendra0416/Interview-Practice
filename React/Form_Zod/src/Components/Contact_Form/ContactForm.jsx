@@ -10,7 +10,14 @@ function ContactForm() {
         },
     });
 
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = async (data) => {
+        console.log("Data: ", data);
+
+        //Just to test
+        await new Promise((resolve) => {
+            setTimeout(() => { resolve; console.log("Async Function Executed!") }, 600)
+        });
+    };
 
     return <div className="cf-page">
         <div className="cf-container">
