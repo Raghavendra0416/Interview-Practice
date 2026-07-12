@@ -80,7 +80,10 @@ function ZodPlayground() {
                                 <input
                                     id="birthDate"
                                     type="date"
+                                    //What does onChange Does here -> in Notes
                                     onChange={(e) => field.onChange(e.target.value ? new Date(e.target.value) : undefined)}
+                                    // toISOString is used to converts a Date object into a standardized string format
+                                    //By using .split('T')[0] will Extract only the Date
                                     value={field.value ? field.value.toISOString().split('T')[0] : ''}
                                 />
                             )}
